@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Estatístico CERTA - FCEE</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="hero hero-blue">
+    <div class="hero-logos">
+      <img src="govsc.svg" alt="Logo Governo de SC" class="logo-img">
+      <img src="fcee.svg" alt="Logo FCEE" class="logo-img">
+    </div>
+
+    <div class="hero-title" id="hero-title">
+      <p class="hero-kicker">CERTA - FCEE</p>
+      <h1>Painel Estatístico CERTA - FCEE</h1>
+      <p class="hero-sub">Centro de Referência em Tecnologia Assistiva</p>
+    </div>
+
+    <div class="hero-actions">
+      <a class="button-link ghost" href="admin.html" aria-label="Painel Administrativo">
+        <span class="icon">⚙</span>
+        Admin
+      </a>
+    </div>
+  </header>
+
+  <main class="layout no-map">
+    <section class="info-panel full">
+      <div class="gauge-block">
+        <div class="panel-heading tight">
+          <div>
+            <h2>Panorama</h2>
+            <p class="muted">Dados fixos para apresentação (GitHub Pages).</p>
+          </div>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-card">
+            <span>Total de ações</span>
+            <strong id="kpi-total">-</strong>
+          </div>
+          <div class="impact-card">
+            <span>Nos Centros FCEE</span>
+            <strong id="kpi-centros">-</strong>
+          </div>
+          <div class="impact-card">
+            <span>Em diversas regiões</span>
+            <strong id="kpi-regioes">-</strong>
+          </div>
+          <div class="impact-card">
+            <span>% nos Centros FCEE</span>
+            <strong id="kpi-share">-</strong>
+          </div>
+        </div>
+
+        <div class="callouts">
+          <div class="callout">
+            <div class="callout-title">Destaque</div>
+            <div class="callout-body" id="callout-1">-</div>
+          </div>
+          <div class="callout">
+            <div class="callout-title">Destaque</div>
+            <div class="callout-body" id="callout-2">-</div>
+          </div>
+          <div class="callout">
+            <div class="callout-title">Destaque</div>
+            <div class="callout-body" id="callout-3">-</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="charts-grid wide">
+        <div class="chart-card">
+          <div class="card-title">Número de Capacitações e Recursos por Tipo</div>
+          <canvas id="tipoStackChart" height="170"></canvas>
+          <div class="chart-legend">
+            <span class="legend-item"><span class="swatch swatch-centros"></span>Centros FCEE</span>
+            <span class="legend-item"><span class="swatch swatch-regioes"></span>Diversas regiões</span>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-title">Distribuição do total por Tipo</div>
+          <canvas id="tipoTotalChart" height="170"></canvas>
+          <div class="chart-legend muted">Serviços, Recursos de TA e Open Day.</div>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-title">Proporção realizada nos Centros FCEE</div>
+          <canvas id="percentChart" height="170"></canvas>
+          <div class="chart-legend muted">% de ações realizadas nos centros por tipo.</div>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-title">Centros FCEE x Diversas regiões (Total consolidado)</div>
+          <canvas id="origemDonut" height="170"></canvas>
+          <div class="chart-legend muted">Comparativo global.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="scripts/shared-data.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

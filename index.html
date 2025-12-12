@@ -9,103 +9,118 @@
 </head>
 <body>
   <header class="hero hero-blue">
-    <div class="hero-logos">
-      <img src="govsc.svg" alt="Logo Governo de SC" class="logo-img">
-      <img src="fcee.svg" alt="Logo FCEE" class="logo-img">
-    </div>
-
-    <div class="hero-title" id="hero-title">
-      <p class="hero-kicker">CERTA - FCEE</p>
-      <h1>Painel Estatístico CERTA - FCEE</h1>
-      <p class="hero-sub">Centro de Referência em Tecnologia Assistiva</p>
-    </div>
-
-    <div class="hero-actions">
-      <a class="button-link ghost" href="admin.html" aria-label="Painel Administrativo">
-        <span class="icon">⚙</span>
-        Admin
-      </a>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-title">Painel Estatístico CERTA - FCEE</div>
+        <div class="hero-subtitle">Centro de Referência em Tecnologia Assistiva</div>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">Dados fixos no Pages</span>
+        <span class="badge badge-light">Atualizado no JS</span>
+      </div>
     </div>
   </header>
 
-  <main class="layout no-map">
-    <section class="info-panel full">
-      <div class="gauge-block">
-        <div class="panel-heading tight">
-          <div>
-            <h2>Panorama</h2>
-            <p class="muted">Dados fixos para apresentação (GitHub Pages).</p>
-          </div>
-        </div>
+  <main class="container">
+    <section class="kpis">
+      <div class="kpi-card">
+        <div class="kpi-label">Total de Ações</div>
+        <div class="kpi-value" id="kpiTotal">0</div>
+        <div class="kpi-foot">Serviços + Recursos de TA + Open Day</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Centros FCEE</div>
+        <div class="kpi-value" id="kpiCentros">0</div>
+        <div class="kpi-foot">Nuclear (Campus São José)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Diversas Regiões</div>
+        <div class="kpi-value" id="kpiRegioes">0</div>
+        <div class="kpi-foot">Extensivo (rede e parceiros)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Municípios Atendidos</div>
+        <div class="kpi-value" id="kpiMunicipios">0</div>
+        <div class="kpi-foot">Somando Open Day + Serviços + Recursos</div>
+      </div>
+    </section>
 
-        <div class="impact-grid">
-          <div class="impact-card">
-            <span>Total de ações</span>
-            <strong id="kpi-total">-</strong>
-          </div>
-          <div class="impact-card">
-            <span>Nos Centros FCEE</span>
-            <strong id="kpi-centros">-</strong>
-          </div>
-          <div class="impact-card">
-            <span>Em diversas regiões</span>
-            <strong id="kpi-regioes">-</strong>
-          </div>
-          <div class="impact-card">
-            <span>% nos Centros FCEE</span>
-            <strong id="kpi-share">-</strong>
-          </div>
+    <section class="grid">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Número de Capacitações e Recursos por Tipo</div>
+          <div class="card-subtitle">Barras verticais (Centros FCEE × Diversas Regiões)</div>
         </div>
-
-        <div class="callouts">
-          <div class="callout">
-            <div class="callout-title">Destaque</div>
-            <div class="callout-body" id="callout-1">-</div>
-          </div>
-          <div class="callout">
-            <div class="callout-title">Destaque</div>
-            <div class="callout-body" id="callout-2">-</div>
-          </div>
-          <div class="callout">
-            <div class="callout-title">Destaque</div>
-            <div class="callout-body" id="callout-3">-</div>
-          </div>
+        <div class="card-body">
+          <canvas id="chartTipo"></canvas>
         </div>
-
       </div>
 
-      <div class="charts-grid wide">
-        <div class="chart-card">
-          <div class="card-title">Número de Capacitações e Recursos por Tipo</div>
-          <canvas id="tipoStackChart" height="170"></canvas>
-          <div class="chart-legend">
-            <span class="legend-item"><span class="swatch swatch-centros"></span>Centros FCEE</span>
-            <span class="legend-item"><span class="swatch swatch-regioes"></span>Diversas regiões</span>
-          </div>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Distribuição Geral</div>
+          <div class="card-subtitle">Total consolidado (Centros FCEE × Diversas Regiões)</div>
         </div>
-
-        <div class="chart-card">
-          <div class="card-title">Distribuição do total por Tipo</div>
-          <canvas id="tipoTotalChart" height="170"></canvas>
-          <div class="chart-legend muted">Serviços, Recursos de TA e Open Day.</div>
-        </div>
-
-        <div class="chart-card">
-          <div class="card-title">Proporção realizada nos Centros FCEE</div>
-          <canvas id="percentChart" height="170"></canvas>
-          <div class="chart-legend muted">% de ações realizadas nos centros por tipo.</div>
-        </div>
-
-        <div class="chart-card">
-          <div class="card-title">Centros FCEE x Diversas regiões (Total consolidado)</div>
-          <canvas id="origemDonut" height="170"></canvas>
-          <div class="chart-legend muted">Comparativo global.</div>
+        <div class="card-body">
+          <canvas id="chartGeral"></canvas>
         </div>
       </div>
     </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Top Municípios por Volume</div>
+          <div class="card-subtitle">Soma: Open Day + Serviços + Recursos</div>
+        </div>
+        <div class="card-body">
+          <canvas id="chartMunicipios"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Origem da Solicitação por Tipo</div>
+          <div class="card-subtitle">Nuclear (FCEE) × Extensivo (Rede/Parceiros)</div>
+        </div>
+        <div class="card-body">
+          <canvas id="chartOrigem"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div class="card-title">Instituições/Centros mais acionados (quando informado)</div>
+        <div class="card-subtitle">Sem nomes de pessoas — somente instituições/centros/setores</div>
+      </div>
+      <div class="card-body">
+        <div class="table-wrap">
+          <table class="table" id="tblTopInstituicoes">
+            <thead>
+              <tr>
+                <th>Instituição / Centro / Setor</th>
+                <th class="num">Ocorrências</th>
+                <th class="num">Tipo mais frequente</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- preenchido via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-muted">
+        Painel estático (GitHub Pages) — atualização via arquivos em <code>scripts/</code>.
+      </div>
+    </footer>
   </main>
 
   <script src="scripts/shared-data.js"></script>
+  <script src="scripts/certa-data.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 </html>
